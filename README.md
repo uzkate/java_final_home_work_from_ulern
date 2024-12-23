@@ -1,140 +1,56 @@
 
-# Обработка и анализ данных о видеоиграх
+# Average Global Sales by Platform - Project
 
-Этот проект демонстрирует обработку, хранение и анализ данных о продажах видеоигр с использованием Java и SQLite. Основные функции включают чтение данных из CSV-файла, сохранение их в объектах, запись в базу данных SQLite, а также выполнение запросов и анализ.
+## Overview
+This project processes data about video game sales to generate a visualization of the average global sales by platform. The data is loaded from a CSV file, and for each platform, we calculate the average global sales. The results are then displayed on a chart.
 
-## Функциональность
+## Technologies Used
+- Java
+- XChart (for charting)
+- BufferedReader (for reading CSV data)
+- Collections (for data processing)
 
-1. **Парсинг данных**:
-   - Чтение данных из CSV-файла (например, данные о продажах видеоигр).
-   - Создание объектов класса `Game` для хранения информации.
+## File Structure
+- `Main.java` : The main program to load, process, and visualize the data.
+- `Игры.csv` : The CSV file containing video game sales data.
+- `SalesAnalysis.java` : A class with methods for additional analysis, including finding the highest sales in Europe in 2000 and the highest sports game sales in Japan between 2000-2006.
 
-2. **Объектно-ориентированное проектирование**:
-   - Класс `Game` для хранения информации об игре.
-   - Класс `GameDataHandler` для управления коллекцией игр и выполнения операций над ними.
+## Instructions
 
-3. **Интеграция с базой данных**:
-   - Использование SQLite для постоянного хранения данных.
-   - Создание таблицы (`games`) для хранения записей об играх.
-   - Запись данных в базу данных из объектов `Game`.
+1. **Import Data**: The program loads data from a CSV file (`Игры.csv`). Ensure the file is present in the resources folder of the project.
 
-4. **Запросы к данным**:
-   - Поиск платформы с самыми высокими средними глобальными продажами.
-   - Поиск игры с самыми высокими продажами в Европе за 2000 год.
-   - Определение спортивной игры с самыми высокими продажами в Японии в период с 2000 по 2006 годы.
+2. **Data Processing**: The program processes the data by grouping it by platform and calculating the average global sales for each platform.
 
-5. **Визуализация данных**:
-   - Использование Python для построения графиков, например, среднего уровня глобальных продаж по платформам.
+3. **Visualization**: The program generates a bar chart displaying the average global sales per platform, with platforms sorted by sales.
 
-## Использование
+4. **Additional Analysis**: The program also includes two analysis methods:
+   - `findHighestSalesInEurope2000`: Finds the game with the highest sales in Europe in the year 2000.
+   - `findHighestSportsGameSalesJapan2000To2006`: Finds the highest-selling sports game in Japan from 2000 to 2006.
 
-### Предварительные требования
+## Running the Project
 
-- **Java Development Kit (JDK)**: Версия 11 или выше.
-- **SQLite JDBC Driver**: Добавьте [SQLite JDBC-драйвер](https://bitbucket.org/xerial/sqlite-jdbc/downloads/) в зависимости проекта.
-- **CSV-файл**: Файл с корректно отформатированными данными о продажах видеоигр.
+1. Compile the Java files:
 
-### Шаги для запуска
-
-1. **Клонирование репозитория**:
    ```bash
-   git clone <repository-url>
-   cd <repository-folder>
+   javac Main.java SalesAnalysis.java
    ```
 
-2. **Настройка зависимостей**:
-   - Добавьте SQLite JDBC-драйвер в проект.
-   - Убедитесь, что ваша IDE (например, IntelliJ IDEA или Eclipse) настроена на использование внешних библиотек.
+2. Run the program:
 
-3. **Компиляция и запуск**:
-   - Скомпилируйте Java-файлы:
-     ```bash
-     javac Main.java
-     ```
-   - Запустите приложение:
-     ```bash
-     java Main
-     ```
+   ```bash
+   java Main
+   ```
 
-4. **Проверка базы данных**:
-   - После запуска приложения в корневой директории создастся файл `game_sales.db`.
-   - Вы можете открыть этот файл с помощью любого SQLite-браузера (например, [DB Browser for SQLite](https://sqlitebrowser.org/)).
+3. The program will display a bar chart showing the average global sales per platform.
 
-5. **Генерация визуализаций**:
-   - Используйте предоставленный Python-скрипт (или интегрируйте данные в свой собственный), чтобы создать графики и диаграммы.
+## Requirements
 
-## Структура проекта
+- Java 8 or higher
+- XChart library (add XChart dependency to your project)
 
-- `Game.java`: Класс для представления информации об игре.
-- `GameDataHandler.java`: Класс для управления коллекциями объектов `Game` и выполнения операций, таких как фильтрация и поиск.
-- `Main.java`: Точка входа в приложение, включая интеграцию с базой данных и выполнение SQL-запросов.
+## Notes
+- Ensure that `Игры.csv` contains the necessary data with the correct structure (with at least 11 columns).
+- The program assumes the CSV file has a header, which is skipped during processing.
 
-## Примеры запросов
-
-### Запрос 1: Платформа с самыми высокими средними глобальными продажами
-```sql
-SELECT platform, AVG(global_sales) as avg_sales
-FROM games
-GROUP BY platform
-ORDER BY avg_sales DESC
-LIMIT 1;
-```
-
-### Запрос 2: Игра с самыми высокими продажами в Европе (2000)
-```sql
-SELECT name, eu_sales
-FROM games
-WHERE year = 2000
-ORDER BY eu_sales DESC
-LIMIT 1;
-```
-
-### Запрос 3: Лучшая спортивная игра по продажам в Японии (2000-2006)
-```sql
-SELECT name, jp_sales
-FROM games
-WHERE genre = 'Sports' AND year BETWEEN 2000 AND 2006
-ORDER BY jp_sales DESC
-LIMIT 1;
-```
-
-## Результаты
-
-- **Консоль**: Вывод результатов запросов, включая лучшую игру и платформу.
-- **База данных**: Полный набор данных сохраняется в SQLite.
-- **Визуализация**: Диаграммы и графики, сгенерированные с помощью Python.
-
-## Зависимости
-
-- **Java**: Для основной обработки данных.
-- **SQLite JDBC**: Для интеграции с базой данных.
-- **Python (опционально)**: Для визуализации данных.
-
-## Возможные улучшения
-
-- Добавить более сложные запросы к данным.
-- Реализовать интеграцию с REST API для доступа к данным в реальном времени.
-- Разработать графический интерфейс для улучшения взаимодействия с пользователем.
-
----
-
-### Автор
-Проект создан для демонстрации интеграции Java и SQLite для анализа данных и их визуализации.
-
----
-
-### Скриншоты
-
-### График
-![output](https://github.com/user-attachments/assets/db3f73df-7ec4-4823-afab-7b36f48b1225)
-
----
-
-### Числовые значения
-результаты запросов:
-
-Платформа с самым высоким средним показателем глобальных продаж: GB (Game Boy) с показателем 2.61 млн..
-
-Игра с самым высоким показателем продаж в Европе за 2000 год: Driver 2 с показателем 2.1 млн..
-
-Игра с самым высоким показателем продаж в Японии с 2000 по 2006 год из жанра спортивных игр: Wii Sports с показателем 3.77 млн..
+## License
+This project is open-source and free to use. Modify or distribute as needed.
