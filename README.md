@@ -1,56 +1,56 @@
 
-# Average Global Sales by Platform - Project
+# Средние глобальные продажи по платформам - Проект
 
-## Overview
-This project processes data about video game sales to generate a visualization of the average global sales by platform. The data is loaded from a CSV file, and for each platform, we calculate the average global sales. The results are then displayed on a chart.
+## Обзор
+Этот проект обрабатывает данные о продажах видеоигр для создания визуализации средних глобальных продаж по платформам. Данные загружаются из CSV-файла, и для каждой платформы вычисляются средние глобальные продажи. Результаты затем отображаются на графике.
 
-## Technologies Used
+## Используемые технологии
 - Java
-- XChart (for charting)
-- BufferedReader (for reading CSV data)
-- Collections (for data processing)
+- XChart (для построения графиков)
+- BufferedReader (для чтения данных из CSV)
+- Collections (для обработки данных)
 
-## File Structure
-- `Main.java` : The main program to load, process, and visualize the data.
-- `Игры.csv` : The CSV file containing video game sales data.
-- `SalesAnalysis.java` : A class with methods for additional analysis, including finding the highest sales in Europe in 2000 and the highest sports game sales in Japan between 2000-2006.
+## Структура файлов
+- `Main.java` : Основная программа для загрузки, обработки и визуализации данных.
+- `Игры.csv` : CSV-файл, содержащий данные о продажах видеоигр.
+- `SalesAnalysis.java` : Класс с методами для дополнительного анализа, включая нахождение самых высоких продаж в Европе в 2000 году и самых высоких продаж спортивных игр в Японии с 2000 по 2006 год.
 
-## Instructions
+## Инструкции
 
-1. **Import Data**: The program loads data from a CSV file (`Игры.csv`). Ensure the file is present in the resources folder of the project.
+1. **Импорт данных**: Программа загружает данные из CSV-файла (`Игры.csv`). Убедитесь, что файл находится в папке ресурсов проекта.
 
-2. **Data Processing**: The program processes the data by grouping it by platform and calculating the average global sales for each platform.
+2. **Обработка данных**: Программа обрабатывает данные, группируя их по платформам и вычисляя средние глобальные продажи для каждой платформы.
 
-3. **Visualization**: The program generates a bar chart displaying the average global sales per platform, with platforms sorted by sales.
+3. **Визуализация**: Программа строит график, отображающий средние глобальные продажи по платформам, сортируя платформы по продажам.
 
-4. **Additional Analysis**: The program also includes two analysis methods:
-   - `findHighestSalesInEurope2000`: Finds the game with the highest sales in Europe in the year 2000.
-   - `findHighestSportsGameSalesJapan2000To2006`: Finds the highest-selling sports game in Japan from 2000 to 2006.
+4. **Дополнительный анализ**: Программа также включает два метода анализа:
+   - `findHighestSalesInEurope2000`: Нахождение игры с самыми высокими продажами в Европе в 2000 году.
+   - `findHighestSportsGameSalesJapan2000To2006`: Нахождение самой продаваемой спортивной игры в Японии с 2000 по 2006 год.
 
-## Running the Project
+## Запуск проекта
 
-1. Compile the Java files:
+1. Скомпилируйте файлы Java:
 
    ```bash
    javac Main.java SalesAnalysis.java
    ```
 
-2. Run the program:
+2. Запустите программу:
 
    ```bash
    java Main
    ```
 
-3. The program will display a bar chart showing the average global sales per platform.
+3. Программа отобразит столбчатую диаграмму, показывающую средние глобальные продажи по платформам.
 
-## Requirements
+## Требования
 
-- Java 8 or higher
-- XChart library (add XChart dependency to your project)
+- Java 8 или выше
+- Библиотека XChart (добавьте зависимость XChart в ваш проект)
 
-## Notes
-- Ensure that `Игры.csv` contains the necessary data with the correct structure (with at least 11 columns).
-- The program assumes the CSV file has a header, which is skipped during processing.
+## Примечания
+- Убедитесь, что файл `Игры.csv` содержит необходимые данные с правильной структурой (как минимум 11 столбцов).
+- Программа предполагает, что файл CSV имеет заголовок, который будет пропущен при обработке.
 
-## License
-This project is open-source and free to use. Modify or distribute as needed.
+## Лицензия
+Этот проект является с открытым исходным кодом и бесплатен для использования. Модифицируйте или распространяйте по мере необходимости.
