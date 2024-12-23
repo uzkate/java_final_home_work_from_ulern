@@ -36,13 +36,12 @@ public class Main {
                 averageSales.add(platformSales.get(platform) / platformCounts.get(platform));
             }
 
-            // Sort platforms by average sales and select top 28 for better visualization
+            // Sort platforms by average sales
             List<String> sortedPlatforms = new ArrayList<>();
             List<Double> sortedAverageSales = new ArrayList<>();
 
             platforms.stream()
                     .sorted(Comparator.comparingDouble(platform -> -platformSales.get(platform) / platformCounts.get(platform)))
-                    .limit(28)
                     .forEach(platform -> {
                         sortedPlatforms.add(platform);
                         sortedAverageSales.add(platformSales.get(platform) / platformCounts.get(platform));
@@ -52,7 +51,7 @@ public class Main {
             CategoryChart chart = new CategoryChartBuilder()
                     .width(1200)
                     .height(600)
-                    .title("Top 28 Average Global Sales by Platform")
+                    .title("Average Global Sales by Platform")
                     .xAxisTitle("Platform")
                     .yAxisTitle("Average Global Sales (in millions)")
                     .build();
